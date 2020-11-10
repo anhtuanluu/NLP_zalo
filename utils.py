@@ -21,7 +21,7 @@ def convert_lines(df, vocab, bpe, max_sequence_length):
         input_ids = vocab.encode_line(subwords, append_eos=False, add_if_not_exist=False).long().tolist()
         if len(input_ids) > max_sequence_length: 
             input_ids = input_ids[:max_sequence_length] 
-            # input_ids[-1] = eos_id
+            input_ids[-1] = eos_id
         else:
             input_ids = input_ids + [pad_id, ]*(max_sequence_length - len(input_ids))
         outputs[idx,:] = np.array(input_ids)
