@@ -87,7 +87,6 @@ if not os.path.exists(args.ckpt_path):
     os.mkdir(args.ckpt_path)
 
 splits = list(StratifiedKFold(n_splits=5, shuffle=True, random_state=123).split(X_train, y))
-print(splits.shape)
 for fold, (train_idx, val_idx) in enumerate(splits):
     print("Training for fold {}".format(fold))
     best_score = 0
